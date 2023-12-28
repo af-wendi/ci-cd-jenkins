@@ -1,13 +1,11 @@
 pipeline {
- agent any
+  agent any
 
- stages {
+  stages {
     stage('Build') {
       steps {
         sh 'docker build -t my-flask-app .'
         sh 'docker tag my-flask-app $DOCKER_BFLASK_IMAGE'
-        sh 'sudo apt-get install -y python-pip'
-        sh 'pip install -r requirements.txt'
       }
     }
     stage('Test') {
@@ -23,10 +21,10 @@ pipeline {
         }
       }
     }
- }
- post {
+  }
+  post {
     always {
       sh 'docker logout'
     }
- }
+  }
 }

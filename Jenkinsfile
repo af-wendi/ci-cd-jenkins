@@ -1,7 +1,7 @@
 pipeline {
-  agent any
+ agent any
 
-  stages {
+ stages {
     stage('Build') {
       steps {
         sh 'docker build -t my-flask-app .'
@@ -22,10 +22,10 @@ pipeline {
         }
       }
     }
-  }
-  post {
+ }
+ post {
     always {
       sh 'docker logout'
     }
-  }
+ }
 }
